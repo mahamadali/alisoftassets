@@ -1,0 +1,17 @@
+{
+    "name": "alisoftassets/firststep",
+    "description": "Ali first step towards building tools",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mahammadali",
+            "email": "manknojiya121@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload" : {
+        "psr-4" : {
+            "Alisoftassets\\Firststep" : "src/"
+        }
+    }
+}
