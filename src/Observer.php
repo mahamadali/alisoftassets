@@ -3,6 +3,7 @@
 namespace Alisoftassets\Firststep\SoftAssetObserver;
 use Alisoftassets\Firststep\Softasset;
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class SoftAssetObserver {
 
@@ -11,7 +12,7 @@ class SoftAssetObserver {
     protected $accessor_id;
 
     public function __construct() {
-        $this->accessor_id = rand(101,200);
+        $this->accessor_id = Auth::user()?Auth::user()->id:null;
     }
 
     public function updating($model)
