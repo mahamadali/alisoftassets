@@ -15,7 +15,25 @@ trait Softasset {
 		$this->isObservable = $isObservable;
 	}
 
-	public function setColumnToObserve($model, $column = 'created_at') {
+	public function setColumnToObserve($model, $columnType = 'created_at', $columnAction = 'CREATION_TIME') {
+		if(count($this->standardColumnsPerAction[$columnAction]) == 0) {
+			return;
+		}
+
+		$columnToSet = NULL;
+		foreach ($this->standardColumnsPerAction[$columnAction] as $columnToCheck) {
+			if (Schema::hasColumn($model->getTable(), $columnToCheck)) {
+				$columnToSet = $columnToCheck;
+				break;
+			}
+		}
+
+		if($columnToSet != NULL) {
+			$this->columns[$columnType] = $columnToSet;
+		} 
+
+		$column = $this->columns[$columnType];
+
         if (!Schema::hasColumn($model->getTable(), $column)) {
         	Schema::table($model->getTable(), function (Blueprint $table) use ($column) {
         		if(strpos($column, '_at')) {
@@ -25,6 +43,8 @@ trait Softasset {
         		}
             });
         }
+        $this->columns[$column] = $column;
+
     }
 
 }
