@@ -1,11 +1,12 @@
 <?php 
 
-namespace Alisoftassets\Firststep\SoftAssetObserver;
+namespace Alisoftassets\Firststep;
+
 use Alisoftassets\Firststep\Softasset;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
 
-class SoftAssetObserver {
+class SoftAssetsObserver {
 
     use Softasset;
 

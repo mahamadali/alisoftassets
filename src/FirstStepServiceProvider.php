@@ -2,8 +2,7 @@
 
 namespace Alisoftassets\Firststep;
 use Illuminate\Support\ServiceProvider;
-use App\Models\Invoice;
-use Alisoftassets\Firststep\SoftAssetObserver\SoftAssetObserver;
+use Alisoftassets\Firststep\SoftAssetsObserver;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
@@ -12,10 +11,9 @@ use Illuminate\Support\Facades\File;
 class FirstStepServiceProvider extends ServiceProvider {
 
 	public function boot() {
-		require_once('Observer.php');
 		$models = $this->getModels();
 		foreach($models as $model) {
-			$model::observe(new SoftAssetObserver());	
+			$model::observe(new SoftAssetsObserver());
 		}
 	}
 
