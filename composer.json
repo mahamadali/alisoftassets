@@ -1,16 +1,17 @@
 {
     "name": "alisoftassets/firststep",
-    "description": "Ali first step towards building web developer tools",
+    "description": "Ali's first step towards building web developer tools",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Mahammadali",
-            "email": "manknojiya121@gmail.com"
+            "email": "manknojiya121@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
-
+        "php" : ">=7.2"
     },
     "autoload" : {
         "psr-4" : {
@@ -19,7 +20,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.4-dev"
+            "master": "1.0.1"
         }
     }
 }
