@@ -15,6 +15,10 @@ trait Softasset {
 		$this->isObservable = $isObservable;
 	}
 
+	public function attachToObservation($closure) {
+		call_user_func($closure);
+	}
+
 	public function setColumnToObserve($model, $columnType = 'created_at', $columnAction = 'CREATION_TIME') {
 		if(count($this->standardColumnsPerAction[$columnAction]) == 0) {
 			return;
