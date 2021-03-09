@@ -1,14 +1,14 @@
 <?php 
 
-namespace Alisoftassets\Firststep;
+namespace AliSoftAssets\FirstStep;
 
-use Alisoftassets\Firststep\Softasset;
+use AliSoftAssets\FirstStep\SoftAsset;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
 
 class SoftAssetsObserver {
 
-    use Softasset;
+    use SoftAsset;
 
     protected $accessor_id;
     protected $standardColumnsPerAction;

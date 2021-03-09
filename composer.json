@@ -15,7 +15,7 @@
     },
     "autoload" : {
         "psr-4" : {
-            "Alisoftassets\\Firststep\\" : "src/"
+            "AliSoftAssets\\FirstStep\\" : "src/"
         }
     },
     "extra": {

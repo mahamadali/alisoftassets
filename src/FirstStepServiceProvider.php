@@ -1,8 +1,8 @@
 <?php
 
-namespace Alisoftassets\Firststep;
+namespace AliSoftAssets\FirstStep;
 use Illuminate\Support\ServiceProvider;
-use Alisoftassets\Firststep\SoftAssetsObserver;
+use AliSoftAssets\FirstStep\SoftAssetsObserver;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;

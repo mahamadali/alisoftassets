@@ -1,10 +1,10 @@
 <?php
 
-namespace Alisoftassets\Firststep;
+namespace AliSoftAssets\FirstStep;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-trait Softasset {
+trait SoftAsset {
 
 	public $isObservable = false;
 	
