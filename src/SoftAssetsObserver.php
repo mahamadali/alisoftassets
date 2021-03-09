@@ -74,6 +74,7 @@ class SoftAssetsObserver {
         $this->setColumnsToObserver($model);
         $model->{$this->columns['UPDATED_BY']} = $this->accessor_id;
         $model->{$this->columns['UPDATED_AT']} = date('Y-m-d H:i:s');
+        $this->dispatchEvents('updating', $model);
     }
 
     public function updated($model) {
@@ -83,6 +84,7 @@ class SoftAssetsObserver {
         $this->setColumnsToObserver($model);
         $model->{$this->columns['UPDATED_BY']} = $this->accessor_id;
         $model->{$this->columns['UPDATED_AT']} = date('Y-m-d H:i:s');
+        $this->dispatchEvents('updated', $model);
     }
 
     public function creating($model) {
@@ -94,6 +96,7 @@ class SoftAssetsObserver {
         $model->{$this->columns['CREATED_AT']} = date('Y-m-d H:i:s');
         $model->{$this->columns['UPDATED_AT']} = date('Y-m-d H:i:s');
         $model->{$this->columns['UPDATED_AT']} = date('Y-m-d H:i:s');
+        $this->dispatchEvents('creating', $model);
     }
 
     public function created($model) {
@@ -103,6 +106,7 @@ class SoftAssetsObserver {
         $this->setColumnsToObserver($model);
         $model->{$this->columns['CREATED_BY']} = $this->accessor_id;
         $model->{$this->columns['CREATED_AT']} = date('Y-m-d H:i:s');
+        $this->dispatchEvents('created', $model);
     }
 
     public function removing($model) {
@@ -113,6 +117,7 @@ class SoftAssetsObserver {
         $model->{$this->columns['DELETED_BY']} = $this->accessor_id;
         $model->{$this->columns['UPDATED_AT']} = date('Y-m-d H:i:s');
         $model->{$this->columns['DELETED_AT']} = date('Y-m-d H:i:s');
+        $this->dispatchEvents('removing', $model);
     }
 
     public function saved($model) {
@@ -123,6 +128,7 @@ class SoftAssetsObserver {
         $model->{$this->columns['CREATED_BY']} = $this->accessor_id;
         $model->{$this->columns['UPDATED_BY']} = $this->accessor_id;
         $model->{$this->columns['UPDATED_AT']} = date('Y-m-d H:i:s');
+        $this->dispatchEvents('save', $model);
     }
 
     public function setColumnsToObserver($model) {
@@ -133,5 +139,4 @@ class SoftAssetsObserver {
         $this->setColumnToObserve($model, 'DELETED_BY', 'DELETED_BY');
         $this->setColumnToObserve($model, 'DELETED_AT', 'DELETING_TIME');
     }
-
 }

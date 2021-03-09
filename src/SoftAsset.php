@@ -7,17 +7,32 @@ use Illuminate\Support\Facades\Schema;
 trait Softasset {
 
 	public $isObservable = false;
-
+	
 	public function __construct() {
+
 	}
 
 	public function setObservable(bool $isObservable = false) {
 		$this->isObservable = $isObservable;
 	}
 
-	public function attachToObservation($closure) {
-		call_user_func($closure);
-	}
+	public function attachOn($event = 'create', $callback) {
+		if(empty($this->attachedEvents[$event])) {
+			$this->attachedEvents[$event] = [];	
+		}
+        $this->attachedEvents[$event][] = $callback;
+    }
+
+    public function dispatchEvents($event = 'create', $model) {
+    	if(empty($model->attachedEvents[$event])) {
+    		return;
+    	}
+        foreach ($model->attachedEvents[$event] as $callback) {
+            if(is_callable($callback)) {
+                call_user_func($callback);
+            }
+        }
+    }
 
 	public function setColumnToObserve($model, $columnType = 'created_at', $columnAction = 'CREATION_TIME') {
 		if(count($this->standardColumnsPerAction[$columnAction]) == 0) {
